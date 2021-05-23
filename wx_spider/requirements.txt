@@ -1,0 +1,6 @@
+wxPython~=4.1.0
+grab
+pytest~=6.2.1
+keyring~=22.0.1
+pypref~=3.1.0
+Jinja2~=2.11.2
