@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>"WxSpider"</title>
+    <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+        }
+
+        .container {
+            float: left;
+            margin: 3px 3px 3px 5px;
+            background: #F0FCE8;
+            width: 63%;
+            height: 100%;
+            padding: 5px;
+            text-align: left;
+            border-radius: 4px;
+            border: 5px solid #E8E8E8;
+            color: #3a5441;
+            box-shadow: rgb(0, 0, 0) 0px 1px 3px;
+
+        }
+
+        .timer {
+            margin-top: 30px;
+            color: #4c6aff;
+            position: absolute;
+            border: 1px solid #115ce0;
+            box-shadow: blue;
+        }
+
+        /********************/
+        .err {
+            word-break: break-all;
+            color: red;
+            font-family: arial, serif;
+            margin: 0;
+        }
+
+        .warn {
+            word-break: break-all;
+            color: #d9941b;
+            font-family: arial, serif;
+            margin: 0;
+
+        }
+
+        .info {
+            word-break: break-all;
+            color: #2c3529;
+            font-family: arial, serif;
+            margin: 0;
+        }
+
+        .debug {
+            word-break: break-all;
+            /*word-wrap: break-all;*/
+            color: #173279;
+            font-family: arial, serif;
+            margin: 0;
+        }
+    </style>
+    
+
+
+</head>
+<body>
+
+
+<div class="container" id="aboutspider" style="width: 30%; ">
+    {% if image %}
+    <img src="{{ image }}">
+    {% endif %}
+    <h2> {{ headline }} </h2>
+    {% if rest_of_text %}
+    <h3>{{ rest_of_text }} </h3>
+    {% endif %}
+    <h3 id="txt" class="timer"></h3>
+</div>
+<div class="container" id="log" style="overflow: scroll;">
+    <table id="toptable">
+
+    </table>
+
+</div>
+
+</body>
+<script type="text/javascript">
+
+    function AddLogEntry(entry, stl) {
+        var log = document.getElementById("log");
+        var tab = document.getElementById("toptable");
+        var row = tab.insertRow(-1);
+        // alert(style);
+        var cell1 = row.insertCell(0);
+        cell1.className = stl;
+        cell1.innerHTML = entry;
+        log.scrollTop = log.scrollHeight;
+    }
+
+    function startTime() {
+        var tm = new Date();
+        var h = tm.getHours();
+        var m = tm.getMinutes();
+        var s = tm.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById('txt').innerHTML = h + ":" + m + ":" + s;
+        t = setTimeout('startTime()', 500);
+    }
+
+    function checkTime(i) {
+        if (i < 10) {
+            i = "0" + i;
+        }
+        return i;
+    }
+
+    startTime();
+</script>
+</html>
+
