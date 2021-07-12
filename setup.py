@@ -18,4 +18,6 @@ setuptools.setup(
     description='Building a simple GUI for Grab:Spider with WxPython',
     long_description=long_description,
     keywords='grabbing scraping wxpython',
+    package_data={'': ['templates//base.html']},
+    include_package_data=True,
 )
