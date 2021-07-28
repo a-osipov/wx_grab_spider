@@ -45,7 +45,8 @@ class WxSpider(grab.spider.Spider, metaclass=MetaWxSpider):
             for control in parent.wx_controls:
                 controls.append(control)
         for control in cls.wx_controls:
-            controls.append(control)
+            if control not in controls:
+                controls.append(control)
         return controls
 
     @classmethod

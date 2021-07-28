@@ -70,3 +70,16 @@ class DemoSpider3(DemoSpider1):
     def task_login(self, grab, task):
         logger.debug('login')
 
+
+class DemoSpider4(DemoSpider1):
+    """
+    DemoSpider4
+    is the spider that shows you
+    how to use the controls
+    """
+
+    image = 'full-frame-watercolor-textured-background.jpg'
+
+    def task_login(self, grab, task):
+        logger.debug('login')
+

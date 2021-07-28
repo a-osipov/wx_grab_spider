@@ -161,6 +161,14 @@ class MainFrame(wx.Frame):
     def webview_page_render(self):
         self.webview.SetPage(self.template.render(self.spider), "")
 
+    def representation_control_value(self, control):
+        if control.wxtype == TextCtrlPassword:
+            return len(control.value) * '*'
+        elif type(control.value) != list:
+            return control.value
+        else:
+            return f'len - {len(control.value)}; '+str(control.value[:3]).replace(']', ', ...]')
+
     def onButton(self, event):
         dlg = SpiderDialog(self.spider)
         if dlg.ShowModal() != wx.ID_OK:
@@ -170,9 +178,8 @@ class MainFrame(wx.Frame):
         self._log(f'spider - "{self.spider.__name__}" ---> run')
         self._log('-------------------')
         if len(self.spider.controls()):
-            self._log(chr(10).join([f'"{control.name}": {control.value}'
-                                    for control in self.spider.controls()
-                                    if control.wxtype != TextCtrlPassword]))
+            self._log(chr(10).join([f'"{control.name}": {self.representation_control_value(control)}'
+                                    for control in self.spider.controls()]))
             self._log('-------------------')
         for control in self.titleBar._vButtons:
             control.Disable()

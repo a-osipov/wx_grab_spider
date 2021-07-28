@@ -8,7 +8,7 @@ with open('requirements.txt') as f:
 
 setuptools.setup(
     name='wx_grab_spider',
-    version='1.0.0',
+    version='1.0.1',
     packages=setuptools.find_packages(),
     install_requires=required,
     url='https://github.com/a-osipov/wx_grab_spider',

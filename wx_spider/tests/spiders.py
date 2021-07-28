@@ -56,6 +56,10 @@ class WxSpider8(WxSpider7):
     pass
 
 
+class WxSpider9(WxSpider4):
+    pass
+
+
 class WxSpiderAbs1(WxSpider):
     wx_controls = [
         ProtoControl('login', wxtype=TextCtrl),
